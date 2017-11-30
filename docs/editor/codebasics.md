@@ -180,27 +180,41 @@ In addition to the default formatters, you can find extensions on the Marketplac
 
 ## Folding
 
-You can fold regions of source code using the folding icons on the gutter between line numbers and line start. Move the mouse over the gutter to fold and unfold regions. The folding regions are evaluated based on the indentation of lines. A folding region starts when a line has a smaller indent than one or more following lines, and ends when there is a line with the same or smaller indent.
-
-Folding also supports region markers. Markers are defined by the language in the language configuration.
-
-The following languages currently have markers defined:
-
-* TypeScript/JavaScript:  `//#region` and `//#endregion`  and `//region` and `//endregion`
-* C#: `#region` and `#endregion`
-* C/C++: `#pragma region` and `#pragma endregion`
-* F#: `//#region` and `//#endregion` and `(#region)` and (#endregion)`
-* Powershell: `#region` and `#endregion`
-* Python: `#region` and `#endregion`
-* VB: `#Region` and `#End Region`
+You can fold regions of source code using the folding icons on the gutter between line numbers and line start.
+Move the mouse over the gutter and click to fold and unfold regions. Use `Shift + Click` on the folding icon to fold or unfold the region and all regions inside.
 
 You can also use the following actions:
 
 * Fold (`kb(editor.fold)`) folds the innermost uncollapsed region at the cursor
 * Unfold (`kb(editor.unfold)`) unfolds the collapsed region at the cursor
+* Fold Recursivly (`kb(editor.foldRecursively)`) folds the innermost uncollapsed region at the cursor and all regions inside that region
+* Unfold Recursivly (`kb(editor.unfoldRecursively)`) unfolds the region at the cursor and all regions inside that region
 * Fold All (`kb(editor.foldAll)`) folds all region in the editor
 * Unfold All (`kb(editor.unfoldAll)`) unfolds all regions in the editor
 * Fold Level X (`kb(editor.foldLevel2)` for level 2) folds all regions of level X, except the region at the current cursor position
+* Fold All Block Comments (`kb(editor.foldAllBlockComments)` folds all regions that start with a block comment token
+
+Folding regions are evaluated based on the indentation of lines. A folding region starts when a line has a smaller indent than one or more following lines, and ends when there is a line with the same or smaller indent.
+
+Regions can also be defined by markers defined by each language. The following languages currently have markers defined:
+
+* C#: `#region` and `#endregion`
+* C/C++: `#pragma region` and `#pragma endregion`
+* CSS/Less/SCSS: `/*#region*/` and `/*#endregion*/`
+* Coffeescript: `#region` and `#endregion`
+* F#: `//#region` and `//#endregion` and `(#region)` and `(#endregion)`
+* Java: `//#region` and `// #endregion` and `//<editor-fold>` and `//</editor-fold>`
+* PHP: `#region` and `#endregion`
+* Powershell: `#region` and `#endregion`
+* Python: `#region` and `#endregion`
+* TypeScript/JavaScript:  `//#region` and `//#endregion`  and `//region` and `//endregion`
+* VB: `#Region` and `#End Region`
+* Bat: `::#region` and `::#endregion`
+
+To fold and unfold only the regions defined by markers use:
+
+* Fold Marker Regions (`kb(editor.foldAllMarkerRegions)` folds all marker regions
+* Unfold Marker Regions (`kb(editor.unfoldAllMarkerRegions)` unfolds all marker regions
 
 ![Folding](images/codebasics/folding.png)
 
